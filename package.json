@@ -1,0 +1,19 @@
+{
+  "name": "redsocial",
+  "version": "1.0.0",
+  "description": "Proyecto de red social para developers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MonicaGonzalez30/RedSocial.git"
+  },
+  "author": "Monica Gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MonicaGonzalez30/RedSocial/issues"
+  },
+  "homepage": "https://github.com/MonicaGonzalez30/RedSocial#readme"
+}
