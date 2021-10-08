@@ -15,14 +15,14 @@
 }
 
 body{
-  background: rgb(68,255,211);
-  background: linear-gradient(135deg, rgba(68,255,211,1) 0%, rgba(118,225,255,1) 40%, rgba(109,232,246,1) 60%, rgba(68,255,211,1) 100%);
+  background: rgb(175,254,209);
+  background: linear-gradient(135deg, rgba(175,254,209,1) 10%, rgba(139,232,254,1) 50%, rgba(213,192,255,1) 90%);
   font-family: 'Open Sans', sans-serif;
 }
 
 .container{
-  background: rgb(68,255,211);
-  background: linear-gradient(135deg, rgba(68,255,211,1) 0%, rgba(118,225,255,1) 40%, rgba(109,232,246,1) 60%, rgba(68,255,211,1) 100%);
+  background: rgb(175,254,209);
+  background: linear-gradient(135deg, rgba(175,254,209,1) 10%, rgba(139,232,254,1) 50%, rgba(213,192,255,1) 90%); 
 }
 
 #btnRegistro {
