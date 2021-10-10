@@ -10,7 +10,7 @@ CREATE TABLE users(
 	lastNameM VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	[password] VARCHAR(50) NOT NULL,
-	PRIMARY KEY (idUser)
+	PRIMARY KEY (email)
 );
 
 --Registros usuarios
@@ -23,7 +23,7 @@ SELECT * FROM users;
 -- Tablas ya con relacion foranea
 CREATE TABLE profiles(
 	idProfile INT NOT NULL IDENTITY(1,1),
-	idUser INT NOT NULL,
+	email VARCHAR(50) NOT NULL,
 	photo VARCHAR(600) NOT NULL,
 	city VARCHAR(50) NOT NULL,
 	country VARCHAR(50) NOT NULL,
@@ -34,12 +34,12 @@ CREATE TABLE profiles(
 	hobbies VARCHAR(500) NOT NULL,
 	extraKnowledge VARCHAR(500) NOT NULL,
 	PRIMARY KEY (idProfile),
-	FOREIGN KEY (idUser) REFERENCES users(idUser) ON DELETE CASCADE
+	FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE
 );
 
 --Registros 
-INSERT INTO profiles (idUser,photo,city,country,age,studies,languages,linkedIn,hobbies,extraKnowledge) VALUES(
-	1,
+INSERT INTO profiles (email,photo,city,country,age,studies,languages,linkedIn,hobbies,extraKnowledge) VALUES(
+	'monik196901@gmail.com',
 	'https://lh3.googleusercontent.com/ogw/ADea4I5G9X0D3CsU7FTZ3qydwjoQ0hWu7tKmyfpvrkZf=s83-c-mo',
 	'Nezahualcóyotl',
 	'México',
