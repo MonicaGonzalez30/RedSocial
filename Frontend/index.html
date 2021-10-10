@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+
+    <!--Link a Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!--Link Bootstrap con javascript-->
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!--Link a hoja de estilos-->
+    <link rel="stylesheet" href="./styles/index.css">
+    <!--Link a Font awesome (iconos)-->
+    <script src="https://kit.fontawesome.com/c99d067221.js" crossorigin="anonymous"></script>
+    <!--Link al incono de la página-->
+    <link rel="shortcut icon" href="./img/iconoRed.png">
+  </head>
+
+  <body>
+    <header> <!--Contiene el encabezado con la barra de navegación-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <a class="navbar-brand">
+                        <img src="./img/logoRed.png" alt="" width="75" height="37" class="d-inline-block align-text-top">
+                      </a>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://historiadeltiempopresente.com/wp-content/uploads/2021/01/userdefaultimage.jpg" alt="" width="32" height="32" class="rounded-circle me-2">Sesión</a>
+                        <ul class="dropdown-menu" aria-labelledby="./navbarDropdown" id="opcs">
+                          <li><a class="dropdown-item" href="#" onclick="logOut()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main id="contenedorPrincipal">
+          <div class="row 3">
+            <div class="col-12">
+                <div class="row g-3">
+                    <div class="col-sm-2">
+                        <img id="photo" src="https://historiadeltiempopresente.com/wp-content/uploads/2021/01/userdefaultimage.jpg" class="rounded float-start" alt="..." >
+                    </div>
+
+                    <div class="col-sm-4">
+                      <h6>Nombre</h6>
+                      <input type="text" class="form-control" id="name" placeholder="" value="" readonly="readonly">
+                      <br><br>
+                      <div class="col-6">
+                        <button id="editFoto" type="button" class="btn btn-primary"><i class="fas fa-camera"></i> Cambiar foto</button>
+                      </div>
+                    </div>
+        
+                    <div class="col-sm-3">
+                      <h6>Apellido paterno</h6>
+                      <input type="text" class="form-control" id="apePat" placeholder="" value="" readonly="readonly">
+                      <br>
+                      <h6>Ciudad</h6>
+                      <input type="text" class="form-control" id="cd" placeholder="" value="" required>
+                    </div>
+  
+                    <div class="col-sm-3">
+                      <h6>Apellido materno</h6>
+                      <input type="text" class="form-control" id="apeMat" placeholder="" value="" readonly="readonly">
+                      <br>
+                      <h6>País</h6>
+                      <input type="text" class="form-control" id="pais" placeholder="" value="" required>
+                    </div>
+        
+                    <div class="col-1">
+                      <h6>Edad</h6>
+                      <input type="text" class="form-control" id="edad" placeholder="" value="" required>
+                    </div>
+        
+                    <div class="col-11">
+                        <h6>Estudios (Universitarios y certificaciones)</h6>
+                        <input type="text" class="form-control" id="estudios" placeholder="" value="" required>
+                    </div>
+
+                    <div class="col-6">
+                        <h6>Idiomas</h6>
+                        <input type="text" class="form-control" id="idiomas" placeholder="" value="" required>
+                    </div>
+
+                    <div class="col-6">
+                        <h6>Hobbies</h6>
+                        <input type="text" class="form-control" id="hobbies" placeholder="" value="" required>
+                    </div>
+
+                    <div class="col-12">
+                        <h6>Conocimientos</h6>
+                        <input type="text" class="form-control" id="conocimientos" placeholder="" value="" required>
+                    </div>
+
+                    <div class="col-6">
+                        <h6>Perfil de linkedIn</h6>
+                        <input type="text" class="form-control" id="conocimientos" placeholder="" value="" required>
+                    </div>
+
+                    <div class="col-4"></div>
+
+                    <div class="col-2">
+                        <button id="guardar" type="button" class="btn btn-primary"><i class="fas fa-user-edit"></i> Guardar información</button>
+                    </div>
+
+                    <hr class="my-4">
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-10">
+                        <h6>Feedback / recomendaciones:</h6>
+                        <input type="text" class="form-control" id="conocimientos" placeholder="" value="" required>
+                    </div>
+                    
+                    <div class="col-2">
+                        <br>
+                        <button id="agregar" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </main>
+      
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <!-- <p class="mb-1">&copy; 2021 Monnet</p> -->
+        </footer>
+    </div>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>

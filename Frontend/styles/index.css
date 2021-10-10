@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+body{
+  /* background: rgba(90,165,255,1); 
+  background: #4e5667;*/
+  background: white;
+  /* background: linear-gradient(114deg, rgba(139,232,254,1) 10%, rgba(127,208,250,1) 49%, rgba(90,165,255,1) 90%); */
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+#photo{
+    width: 200px;
+    height: 200px;
+}
+
+.form-control{
+    background-color:  #e6e6e6;
+    ;
+}
+
+.container{
+    padding-top: 20px;
+}
+
+#opcs{
+  background-color: #212529;
+}
+
+.dropdown-item{
+  color: white;
+}
+
+#contenedorPrincipal{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#guardar{
+    min-height: 80px;
+}

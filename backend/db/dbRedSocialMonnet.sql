@@ -24,7 +24,7 @@ SELECT * FROM users;
 CREATE TABLE profiles(
 	idProfile INT NOT NULL IDENTITY(1,1),
 	idUser INT NOT NULL,
-	photo VARBINARY(MAX) NOT NULL,
+	photo VARCHAR(600) NOT NULL,
 	city VARCHAR(50) NOT NULL,
 	country VARCHAR(50) NOT NULL,
 	age INT NOT NULL,
@@ -38,6 +38,18 @@ CREATE TABLE profiles(
 );
 
 --Registros 
+INSERT INTO profiles (idUser,photo,city,country,age,studies,languages,linkedIn,hobbies,extraKnowledge) VALUES(
+	1,
+	'https://lh3.googleusercontent.com/ogw/ADea4I5G9X0D3CsU7FTZ3qydwjoQ0hWu7tKmyfpvrkZf=s83-c-mo',
+	'Nezahualcóyotl',
+	'México',
+	17,
+	'CECyT 14 Luis Enrique Erro, Certificación en Microsoft Office',
+	'Español, Ingles Nivel B1',
+	'www.linkedin.com/in/monica-gonzalez-chacon',
+	'Escuchar música, dibujar, salir a pasear, ver anime, series y peliculas.',
+	'JavasCript, HTML, CSS, Node.Js, Express, Bases de datos SQL'
+);
 
 SELECT * FROM profiles;
 
@@ -50,5 +62,8 @@ CREATE TABLE feedback(
 );
 
 --Registros 
+INSERT INTO feedback (idProfile,comment) VALUES(
+	1,'El perfil esta muy completo.'
+);
 
 SELECT * FROM feedback;
