@@ -17,7 +17,13 @@ module.exports = async (app) => {
         console.log(resp);
         res.send(resp);
     });
-
+    //Guardar recomendaciones
+    app.post('/createFeedback',validation.feedbackValidation,autentication.userAutentication,async(req,res) => {
+        let feedback = req.body;
+        let resp = await userController.createFeedback(feedback);
+        console.log(resp);
+        res.send(resp);
+    });
     //Mostrar información del usuario
     app.get('/user/:email',autentication.userAutentication,async(req,res) => {
         let userEmail = req.params.email
@@ -25,6 +31,5 @@ module.exports = async (app) => {
         console.log(resp);
         res.send(resp);
     });
-
-    //Guardar recomendaciones
+    //Mostrar recomendaciones
 };

@@ -21,6 +21,16 @@ module.exports.createProfile = async (profile) => {
     }
 }
 
+module.exports.createFeedback = async (feedback) => {
+    let response = new userModel();
+    let result = await response.createF(feedback);
+    if(result){
+        return "Feedback para el usuario creado.";
+    } else{
+        return "Feedback para el usuario no creado.";
+    }
+}
+
 module.exports.findUser = async (userEmail) => {
     let response = new userModel();
     let result = await response.find(userEmail);
