@@ -11,7 +11,12 @@ module.exports = async (app) => {
         res.send(resp);
     });
     //Guardar información del usuario
-
+    app.post('/createProfile',validation.profileUserValidation,autentication.userAutentication,async(req,res) => {
+        let profile = req.body;
+        let resp = await userController.createProfile(profile);
+        console.log(resp);
+        res.send(resp);
+    });
 
     //Mostrar información del usuario
     app.get('/user/:email',autentication.userAutentication,async(req,res) => {

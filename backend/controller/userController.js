@@ -11,6 +11,16 @@ module.exports.createUser = async (user) => {
     }
 }
 
+module.exports.createProfile = async (profile) => {
+    let response = new userModel();
+    let result = await response.createP(profile);
+    if(result){
+        return "Perfil del usuario creado.";
+    } else{
+        return "Perfil del usuario no creado.";
+    }
+}
+
 module.exports.findUser = async (userEmail) => {
     let response = new userModel();
     let result = await response.find(userEmail);
