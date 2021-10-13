@@ -22,4 +22,8 @@ module.exports = class loginModel {
         let result = await sequelize.query("SELECT idProfile,[name],lastNameP,lastNameM,photo,city,country,age,studies,languages,linkedIn,hobbies,extraKnowledge FROM users INNER JOIN profiles ON users.email = profiles.email WHERE users.email = '" + userEmail + "';");
         return result[0][0];
     }
+    async findFeed (idProfile){
+        let result = await sequelize.query("SELECT * FROM feedback WHERE idProfile = " + idProfile + ";");
+        return result[0];
+    }
 }

@@ -36,3 +36,9 @@ module.exports.findUser = async (userEmail) => {
     let result = await response.find(userEmail);
     return result;
 }
+
+module.exports.findFeedback = async (idProfile) => {
+    let response = new userModel();
+    let result = await response.findFeed(idProfile);
+    return result;
+}
