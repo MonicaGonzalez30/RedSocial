@@ -57,7 +57,7 @@
                       <input type="text" class="form-control" id="name" placeholder="" value="" readonly="readonly">
                       <br><br>
                       <div class="col-6">
-                        <button id="editFoto" type="button" class="btn btn-primary"><i class="fas fa-camera"></i> Cambiar foto</button>
+                        <button id="editFoto" class="btn btn-primary" type="button" data-toggle="modal" data-target="#modalCambioFoto"><i class="fas fa-camera"></i> Cambiar foto</button>
                       </div>
                     </div>
         
@@ -79,7 +79,7 @@
         
                     <div class="col-1">
                       <h6>Edad</h6>
-                      <input type="text" class="form-control" id="edad" placeholder="" value="" required>
+                      <input type="number" class="form-control" id="edad" placeholder="" value="" required>
                     </div>
         
                     <div class="col-11">
@@ -104,13 +104,13 @@
 
                     <div class="col-6">
                         <h6>Perfil de linkedIn</h6>
-                        <input type="text" class="form-control" id="conocimientos" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="linkedIn" placeholder="" value="" required>
                     </div>
 
                     <div class="col-4"></div>
 
                     <div class="col-2">
-                        <button id="guardar" type="button" class="btn btn-primary"><i class="fas fa-user-edit"></i> Guardar información</button>
+                        <button id="guardar" type="button" class="btn btn-primary" onclick="guardarInf()"><i class="fas fa-user-edit"></i> Guardar información</button>
                     </div>
 
                     <hr class="my-4">
@@ -135,6 +135,31 @@
           <!-- <p class="mb-1">&copy; 2021 Monnet</p> -->
         </footer>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="modalCambioFoto">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Cambiar foto de perfil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Por favor ingresa la URL de la foto de perfil que deseas colocar:</p>
+            <input type="text" class="form-control" id="urlFoto" placeholder="url" value="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="cambiarFoto()">Aceptar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links para que funcione el modal -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="./js/index.js"></script>
   </body>
