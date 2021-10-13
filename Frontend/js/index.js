@@ -79,3 +79,15 @@ async function guardarInf(){
     //     alert("Los datos no pudieron guardarse correctamente.")
     // }
 }
+
+async function logOut(){
+    let token = await JSON.parse(localStorage.getItem('Monnet_token')); //Obtencion del token
+    if (token != undefined) {
+        localStorage.removeItem('Monnet_token');
+        alert("Ha cerrado sesión");
+        window.location="./login.html";
+    } else{
+        alert("Su sesión ha caducado.");
+        window.location="./login.html";
+    }
+}
