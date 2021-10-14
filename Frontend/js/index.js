@@ -80,9 +80,11 @@ async function guardarInf(){
 
 async function mostrarInf(){
     let token = JSON.parse(localStorage.getItem('Monnet_token')); //Obtiene el token desde el local storage
-    console.log(token)
-    let token_decoded = JSON.parse(window.atob(token.split('.')[1])); 
-    const email = String(token_decoded.data.email); //obtener el valor
+    let tokenDecoded = decodeURIComponent(window.atob(token.split('.')[1]).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join('')); //Decodifica el token tambien con acentos
+    let token_decoded = JSON.parse(tokenDecoded); 
+    const email = String(token_decoded.data.email); //obtener el email
 
     //Mostrar la información ya registrada
     const nombre = document.getElementById("name");
@@ -102,7 +104,7 @@ async function mostrarInf(){
     //Regreso de la respuesta
     const data = await url.json(url);
     console.log(data)
-    if (data != "La información del usuario no existe.") {
+    if (data.noExiste != "La información del usuario no existe.") {
         //Mostrar la información
         const foto = document.getElementById("photo");
         const cd = document.getElementById("cd");
@@ -120,9 +122,9 @@ async function mostrarInf(){
         edad.value = data.age;
         estudios.value = data.studies;
         idiomas.value = data.languages;
-        hobbies.value = data.linkedIn;
-        conoci.value = data.hobbies;
-        linkedIn.value = data.extraKnowledge;
+        hobbies.value = data.hobbies;
+        conoci.value = data.extraKnowledge;
+        linkedIn.value = data.linkedIn;
 
         var idPerfil = data.idProfile;
         mostrarFeed(idPerfil);

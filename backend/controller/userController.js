@@ -37,7 +37,7 @@ module.exports.findUser = async (userEmail) => {
     if (result) {
         return result;
     } else {
-        return "La información del usuario no existe."
+        return ({'noExiste':"La información del usuario no existe."}); 
     }
 }
 
