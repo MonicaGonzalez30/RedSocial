@@ -64,7 +64,7 @@ async function guardarInf(){
         mode: "cors",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": token
+            "Authorization": "Bearer "+token
         },
         body: JSON.stringify(perfil),
     });
@@ -96,7 +96,7 @@ async function mostrarInf(){
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": token
+            "Authorization": "Bearer "+token
         },
     });
     //Regreso de la respuesta
@@ -140,7 +140,7 @@ async function mostrarFeed(idPerfil){
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": token
+            "Authorization": "Bearer "+token
         },
     });
     //Regreso de la respuesta
@@ -179,7 +179,7 @@ async function guardarFeed(idPerfil){
         mode: "cors",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": token
+            "Authorization": "Bearer "+token
         },
         body: JSON.stringify(recomen),
     });
