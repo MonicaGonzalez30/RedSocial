@@ -34,11 +34,19 @@ module.exports.createFeedback = async (feedback) => {
 module.exports.findUser = async (userEmail) => {
     let response = new userModel();
     let result = await response.find(userEmail);
-    return result;
+    if (result) {
+        return result;
+    } else {
+        return "La información del usuario no existe."
+    }
 }
 
 module.exports.findFeedback = async (idProfile) => {
     let response = new userModel();
     let result = await response.findFeed(idProfile);
-    return result;
+    if (result) {
+        return result;
+    } else {
+        return "El feedback no existe."
+    }
 }

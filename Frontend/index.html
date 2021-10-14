@@ -119,12 +119,25 @@
                 <div class="row g-3">
                     <div class="col-10">
                         <h6>Feedback / recomendaciones:</h6>
-                        <input type="text" class="form-control" id="conocimientos" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="feedback" placeholder="" value="" required>
                     </div>
                     
                     <div class="col-2">
                         <br>
-                        <button id="agregar" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
+                        <button id="agregar" type="button" class="btn btn-primary" onclick="guardarFeed()"><i class="fas fa-plus-circle"></i> Agregar</button>
+                    </div>
+
+                    <div class="container">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody id="contFeed">
+                          <!-- Feedbacks -->
+                        </tbody>
+                      </table>
                     </div>
                 </div>
             </div>

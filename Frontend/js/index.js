@@ -5,13 +5,10 @@ function cambiarFoto(){
 }
 
 async function guardarInf(){
-    //Decodificar el token
-    let token = await JSON.parse(localStorage.getItem('Monnet_token'))//Obtiene el token desde el local storage
-    console.log(token)
-    // let tokenDec = atob(token);
-    // console.log(tokenDec)
+    let token = JSON.parse(localStorage.getItem('Monnet_token'));//Obtiene el token desde el local storage
+    let token_decoded = JSON.parse(window.atob(token.split('.')[1])); 
 
-    let email;
+    let email = token_decoded.data.email;
     let foto = document.getElementById("photo").src;
     let cd = document.getElementById("cd").value;
     let pais = document.getElementById("pais").value;
@@ -50,34 +47,150 @@ async function guardarInf(){
     }
     
     //Proceso del guardado de la información
-    // let perfil = {
-    //     email: email,
-    //     photo: foto,
-    //     city: cd,
-    //     country: pais,
-    //     age: edad,
-    //     studies: estudios,
-    //     languages: idiomas,
-    //     linkedIn: linkedIn,
-    //     hobbies: hobbies,
-    //     extraKnowledge: conoci
-    // };   
-    // let url = await fetch('http://localhost:3000/createProfile', {
-    //     method: "POST",
-    //     mode: "cors",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(perfil),
-    // });
-    //Regreso del token
-    // const data = await url.json();
-    // console.log(data.token);
-    // if (data.token != "Usuario no autenticado.") {
-    //     
-    // } else {
-    //     alert("Los datos no pudieron guardarse correctamente.")
-    // }
+    let perfil = {
+        email: email,
+        photo: foto,
+        city: cd,
+        country: pais,
+        age: edad,
+        studies: estudios,
+        languages: idiomas,
+        linkedIn: linkedIn,
+        hobbies: hobbies,
+        extraKnowledge: conoci
+    };   
+    let url = await fetch('http://localhost:3000/createProfile', {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+        },
+        body: JSON.stringify(perfil),
+    });
+    //Regreso de la respuesta
+    const data = await url.text();
+    console.log(data)
+    if (data != "Perfil del usuario no creado.") {
+        alert("Los datos se guardaron correctamente.")
+    } else {
+        alert("Los datos no pudieron guardarse correctamente.")
+    }
+}
+
+async function mostrarInf(){
+    let token = JSON.parse(localStorage.getItem('Monnet_token')); //Obtiene el token desde el local storage
+    console.log(token)
+    let token_decoded = JSON.parse(window.atob(token.split('.')[1])); 
+    const email = String(token_decoded.data.email); //obtener el valor
+
+    //Mostrar la información ya registrada
+    const nombre = document.getElementById("name");
+    const apePat = document.getElementById("apePat");
+    const apeMat = document.getElementById("apeMat");
+    nombre.value = token_decoded.data.name;
+    apePat.value = token_decoded.data.lastNameP;
+    apeMat.value = token_decoded.data.lastNameM;
+
+    let url = await fetch('http://localhost:3000/user/'+email, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+        },
+    });
+    //Regreso de la respuesta
+    const data = await url.json(url);
+    console.log(data)
+    if (data != "La información del usuario no existe.") {
+        //Mostrar la información
+        const foto = document.getElementById("photo");
+        const cd = document.getElementById("cd");
+        const pais = document.getElementById("pais");
+        const edad = document.getElementById("edad");
+        const estudios = document.getElementById("estudios");
+        const idiomas = document.getElementById("idiomas");
+        const hobbies = document.getElementById("hobbies");
+        const conoci = document.getElementById("conocimientos");
+        const linkedIn = document.getElementById("linkedIn");
+
+        foto.src = data.photo;
+        cd.value = data.city;
+        pais.value = data.country;
+        edad.value = data.age;
+        estudios.value = data.studies;
+        idiomas.value = data.languages;
+        hobbies.value = data.linkedIn;
+        conoci.value = data.hobbies;
+        linkedIn.value = data.extraKnowledge;
+
+        var idPerfil = data.idProfile;
+        mostrarFeed(idPerfil);
+    } else {
+        alert("La información del perfil no existe, debe llenar los campos para guardar su información.")
+    }
+}
+
+async function mostrarFeed(idPerfil){
+    let token = JSON.parse(localStorage.getItem('Monnet_token')); //Obtiene el token desde el local storage
+    const HTMLResponse = document.getElementById("contFeed");
+    HTMLResponse.innerHTML = '';
+
+    let url = await fetch('http://localhost:3000/userFeedback/'+idPerfil, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+        },
+    });
+    //Regreso de la respuesta
+    const data = await url.json(url);
+    console.log(data)
+    if (data != "El feedback no existe.") {
+        //Mostrar los feedbacks
+        let tpl=``;
+        for (let i= 0; i < data.length; i++) {
+           tpl=`
+              <tr> 
+                <td>${data[i].comment}</td>
+              </tr> `
+           HTMLResponse.innerHTML +=`${tpl}`;
+        } 
+    }
+}
+
+
+async function guardarFeed(idPerfil){
+    console.log(idPerfil);
+    let token = JSON.parse(localStorage.getItem('Monnet_token'));//Obtiene el token desde el local storage
+    let recomendacion = document.getElementById("feedback").value;
+
+    if(recomendacion == null || recomendacion.length == 0 || /^\s+$/.test(recomendacion)) {
+        alert('ERROR: Debe ingresar un comentario de recomendación para poder guardarlo.');
+        return false;
+    }
+
+    let recomen = {
+        idProfile: idPerfil,
+        comment: recomendacion
+    };   
+    let url = await fetch('http://localhost:3000/createFeedback', {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+        },
+        body: JSON.stringify(recomen),
+    });
+    //Regreso de la respuesta
+    const data = await url.text();
+    console.log(data)
+    if (data != "Feedback para el usuario no creado.") {
+        alert("El comentario se guardó correctamente.")
+    } else {
+        alert("El comentario no pudo guardarse.")
+    }
 }
 
 async function logOut(){
@@ -91,3 +204,5 @@ async function logOut(){
         window.location="./login.html";
     }
 }
+
+mostrarInf();
