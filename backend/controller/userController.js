@@ -41,9 +41,9 @@ module.exports.findUser = async (userEmail) => {
     }
 }
 
-module.exports.findFeedback = async (idProfile) => {
+module.exports.findFeedback = async (userEmail) => {
     let response = new userModel();
-    let result = await response.findFeed(idProfile);
+    let result = await response.findFeed(userEmail);
     if (result) {
         return result;
     } else {

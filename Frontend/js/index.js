@@ -126,19 +126,19 @@ async function mostrarInf(){
         conoci.value = data.extraKnowledge;
         linkedIn.value = data.linkedIn;
 
-        var idPerfil = data.idProfile;
-        mostrarFeed(idPerfil);
+        mostrarFeed(email);
     } else {
         alert("La información del perfil no existe, debe llenar los campos para guardar su información.")
     }
 }
 
-async function mostrarFeed(idPerfil){
+async function mostrarFeed(email){
     let token = JSON.parse(localStorage.getItem('Monnet_token')); //Obtiene el token desde el local storage
+
     const HTMLResponse = document.getElementById("contFeed");
     HTMLResponse.innerHTML = '';
 
-    let url = await fetch('http://localhost:3000/userFeedback/'+idPerfil, {
+    let url = await fetch('http://localhost:3000/userFeedback/'+email, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -162,9 +162,10 @@ async function mostrarFeed(idPerfil){
 }
 
 
-async function guardarFeed(idPerfil){
-    console.log(idPerfil);
+async function guardarFeed(){
     let token = JSON.parse(localStorage.getItem('Monnet_token'));//Obtiene el token desde el local storage
+    let token_decoded = JSON.parse(window.atob(token.split('.')[1])); 
+    let email = token_decoded.data.email;
     let recomendacion = document.getElementById("feedback").value;
 
     if(recomendacion == null || recomendacion.length == 0 || /^\s+$/.test(recomendacion)) {
@@ -173,7 +174,7 @@ async function guardarFeed(idPerfil){
     }
 
     let recomen = {
-        idProfile: idPerfil,
+        email: email,
         comment: recomendacion
     };   
     let url = await fetch('http://localhost:3000/createFeedback', {
@@ -190,6 +191,7 @@ async function guardarFeed(idPerfil){
     console.log(data)
     if (data != "Feedback para el usuario no creado.") {
         alert("El comentario se guardó correctamente.")
+        window.location="./index.html";
     } else {
         alert("El comentario no pudo guardarse.")
     }

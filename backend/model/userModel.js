@@ -15,15 +15,15 @@ module.exports = class loginModel {
         return result;
     }
     async createF (feedback){
-        let result = await sequelize.query("INSERT INTO feedback (idProfile,comment) VALUES(" + feedback.idProfile + ",'" + feedback.comment + "');");
+        let result = await sequelize.query("INSERT INTO feedback (email,comment) VALUES('" + feedback.email + "','" + feedback.comment + "');");
         return result;
     }
     async find (userEmail){
         let result = await sequelize.query("SELECT idProfile,[name],lastNameP,lastNameM,photo,city,country,age,studies,languages,linkedIn,hobbies,extraKnowledge FROM users INNER JOIN profiles ON users.email = profiles.email WHERE users.email = '" + userEmail + "';");
         return result[0][0];
     }
-    async findFeed (idProfile){
-        let result = await sequelize.query("SELECT * FROM feedback WHERE idProfile = " + idProfile + ";");
+    async findFeed (userEmail){
+        let result = await sequelize.query("SELECT * FROM feedback WHERE email = '" + userEmail + "';");
         return result[0];
     }
 }

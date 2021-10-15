@@ -55,15 +55,15 @@ SELECT * FROM profiles;
 
 CREATE TABLE feedback(
 	idFeedback INT NOT NULL IDENTITY(1,1),
-	idProfile INT NOT NULL,
+	email VARCHAR(50) NOT NULL,
 	comment VARCHAR(300) NOT NULL,
 	PRIMARY KEY (idFeedback),
-	FOREIGN KEY (idProfile) REFERENCES profiles(idProfile) ON DELETE CASCADE
+	FOREIGN KEY (email) REFERENCES users(email) ON DELETE CASCADE
 );
 
 --Registros 
-INSERT INTO feedback (idProfile,comment) VALUES(
-	1,'El perfil esta muy completo.'
+INSERT INTO feedback (email,comment) VALUES(
+	'monik196901@gmail.com','El perfil esta muy completo.'
 );
 
 SELECT * FROM feedback;

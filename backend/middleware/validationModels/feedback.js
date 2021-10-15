@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 module.exports = {
     feedbackModel : Joi.object().keys({
-        idProfile: Joi.number().required(),
+        email: Joi.string().email({ minDomainSegments: 2 }).lowercase().required(),
         comment: Joi.string().min(1).max(300).required()
-    }).with('idProfile','comment')
+    }).with('email','comment')
 }

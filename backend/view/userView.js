@@ -32,9 +32,9 @@ module.exports = async (app) => {
         res.send(resp);
     });
     //Mostrar recomendaciones
-    app.get('/userFeedback/:id',autentication.userAutentication,async(req,res) => {
-        let idProfile = req.params.id
-        let resp = await userController.findFeedback(idProfile);
+    app.get('/userFeedback/:email',autentication.userAutentication,async(req,res) => {
+        let userEmail = req.params.email
+        let resp = await userController.findFeedback(userEmail);
         console.log(resp);
         res.send(resp);
     });
