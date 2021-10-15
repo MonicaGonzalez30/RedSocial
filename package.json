@@ -4,7 +4,7 @@
   "description": "Proyecto de red social para developers",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -17,11 +17,14 @@
   },
   "homepage": "https://github.com/MonicaGonzalez30/RedSocial#readme",
   "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^9.1.3",
     "nodemon": "^2.0.13",
     "sequelize": "^6.7.0",
     "tedious": "^13.1.0"
