@@ -25,7 +25,7 @@ describe('Testing user feedbacks endpoint', () => {
         .get('/userFeedback/monik196901@gmail.com')
         .set({ Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJNw7NuaWNhIiwibGFzdE5hbWVQIjoiR29uesOhbGV6IiwibGFzdE5hbWVNIjoiQ2hhY8OzbiIsImVtYWlsIjoibW9uaWsxOTY5MDFAZ21haWwuY29tIn0sImlhdCI6MTYzNDE2NDE0MX0.Azn6c00YOB0iMBVzjl3xS_ZdKpGazjJX7ipze2YI05g' })
         .end(function name(err,res){
-            expect(res.text).to.be.equal('[{"idFeedback":1,"email":"monik196901@gmail.com","comment":"El perfil esta muy completo."},{"idFeedback":2,"email":"monik196901@gmail.com","comment":"El perfil esta muy completo, aunque la foto no se ve muy bien."},{"idFeedback":4,"email":"monik196901@gmail.com","comment":"La foto no se ve bien, seria bueno cambiarla."},{"idFeedback":5,"email":"monik196901@gmail.com","comment":"Los conocimientos están mal escritos"}]');
+            expect(res.body).to.be.a('array');
             expect(res).to.have.status(200)
         })
     })
@@ -68,6 +68,19 @@ describe('Testing create feedback endpoint', () => {
         })
         .end(function name(err,res){
             expect(res.text).to.be.equal('Feedback para el usuario creado.');
+            expect(res).to.have.status(200)
+        })
+    })
+})
+
+//Mostrar a todos los usuarios
+describe('Testing users endpoint', () => {
+    it('Sending request', () =>{
+        chai.request(url)
+        .get('/users')
+        .set({ Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJNw7NuaWNhIiwibGFzdE5hbWVQIjoiR29uesOhbGV6IiwibGFzdE5hbWVNIjoiQ2hhY8OzbiIsImVtYWlsIjoibW9uaWsxOTY5MDFAZ21haWwuY29tIn0sImlhdCI6MTYzNDE2NDE0MX0.Azn6c00YOB0iMBVzjl3xS_ZdKpGazjJX7ipze2YI05g' })
+        .end(function name(err,res){
+            expect(res.body).to.be.a('array');
             expect(res).to.have.status(200)
         })
     })
