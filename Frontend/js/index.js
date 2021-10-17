@@ -161,7 +161,6 @@ async function mostrarFeed(email){
     }
 }
 
-
 async function guardarFeed(){
     let token = JSON.parse(localStorage.getItem('Monnet_token'));//Obtiene el token desde el local storage
     let token_decoded = JSON.parse(window.atob(token.split('.')[1])); 

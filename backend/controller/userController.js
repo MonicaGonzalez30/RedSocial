@@ -50,3 +50,9 @@ module.exports.findFeedback = async (userEmail) => {
         return "El feedback no existe."
     }
 }
+
+module.exports.listUsers = async () => {
+    let response = new userModel();
+    let result = await response.list();
+    return result;
+}

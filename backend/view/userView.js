@@ -38,4 +38,10 @@ module.exports = async (app) => {
         console.log(resp);
         res.send(resp);
     });
+    //Mostrar usuarios
+    app.get('/users',autentication.userAutentication,async(req,res) => {
+        let resp = await userController.listUsers();
+        console.log(resp);
+        res.send(resp);
+    });
 };

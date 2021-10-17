@@ -45,3 +45,10 @@ body{
 #guardar{
     min-height: 80px;
 }
+
+#contenedorUsuarios {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
