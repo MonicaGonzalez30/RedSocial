@@ -17,10 +17,30 @@ CREATE TABLE users(
 INSERT INTO users ([name],lastNameP,lastNameM,email,[password]) VALUES(
 	'Mónica','González','Chacón','monik196901@gmail.com','Moni1234'
 );
+INSERT INTO users ([name],lastNameP,lastNameM,email,[password]) VALUES(
+	'Vanesa','González','Chacón','vanesa@gmail.com','vanesaS01'
+);
 
 SELECT * FROM users;
 
+--Amistades
+CREATE TABLE friendships(
+	idFriendship INT NOT NULL IDENTITY(1,1),
+	emailSend VARCHAR(50) NOT NULL,
+	emailReceive VARCHAR(50) NOT NULL,
+	[status] VARCHAR(10) NOT NULL,
+	PRIMARY KEY (idFriendship)
+);
+
+--Registros 
+INSERT INTO friendships (emailSend,emailReceive,[status]) VALUES(
+	'vanesa@gmail.com','monik196901@gmail.com','Enviado'
+);
+
+SELECT * FROM friendships;
+
 -- Tablas ya con relacion foranea
+--Perfiles
 CREATE TABLE profiles(
 	idProfile INT NOT NULL IDENTITY(1,1),
 	email VARCHAR(50) NOT NULL,
@@ -53,6 +73,7 @@ INSERT INTO profiles (email,photo,city,country,age,studies,languages,linkedIn,ho
 
 SELECT * FROM profiles;
 
+--Recomendaciones (comentarios)
 CREATE TABLE feedback(
 	idFeedback INT NOT NULL IDENTITY(1,1),
 	email VARCHAR(50) NOT NULL,
