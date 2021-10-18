@@ -122,3 +122,16 @@ describe('Testing send request friendship endpoint', () => {
         })
     })
 })
+
+//Mostrar todas las solicitudes de amistad
+describe('Testing requests friendship endpoint', () => {
+    it('Sending request', () =>{
+        chai.request(url)
+        .get('/requestsFriendship/monik196901@gmail.com')
+        .set({ Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJNw7NuaWNhIiwibGFzdE5hbWVQIjoiR29uesOhbGV6IiwibGFzdE5hbWVNIjoiQ2hhY8OzbiIsImVtYWlsIjoibW9uaWsxOTY5MDFAZ21haWwuY29tIn0sImlhdCI6MTYzNDE2NDE0MX0.Azn6c00YOB0iMBVzjl3xS_ZdKpGazjJX7ipze2YI05g' })
+        .end(function name(err,res){
+            expect(res.body).to.be.a('array');
+            expect(res).to.have.status(200)
+        })
+    })
+})
