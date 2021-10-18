@@ -5,6 +5,25 @@ const expect = require('chai').expect;
 chai.use(chaiHttp);
 const url = 'http://localhost:3000';
 
+//Registrar un nuevo usuario
+describe('Testing create user endpoint', () => {
+    it('Sending request', () =>{
+        chai.request(url)
+        .post('/createUser')
+        .send({
+            name: "Sara",
+            lastNameP: "Segundo",
+            lastNameM: "Alonso",
+            email: "sara63@gmail.com",
+            password: "sarita01"
+        })
+        .end(function name(err,res){
+            expect(res.text).to.be.equal('Usuario creado.');
+            expect(res).to.have.status(200)
+        })
+    })
+})
+
 //Mostrar información del usuario
 describe('Testing user information endpoint', () => {
     it('Sending request', () =>{
