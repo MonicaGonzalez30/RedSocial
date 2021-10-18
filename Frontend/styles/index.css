@@ -52,6 +52,10 @@ body{
   align-items: flex-start;
 }
 
+.item{
+  background-color: #eeeeee;
+}
+
 .envSolicitud{
   background-color: #7b53c5;
 }
