@@ -16,17 +16,16 @@ body{
 }
 
 #photo{
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .form-control{
-    background-color:  #e6e6e6;
-    ;
+  background-color:  #e6e6e6;
 }
 
 .container{
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 #opcs{
@@ -38,12 +37,12 @@ body{
 }
 
 #contenedorPrincipal{
-    display: flex;
-    flex-wrap: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 #guardar{
-    min-height: 80px;
+  min-height: 80px;
 }
 
 #contenedorUsuarios {
@@ -51,4 +50,8 @@ body{
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: flex-start;
+}
+
+.envSolicitud{
+  background-color: #7b53c5;
 }
