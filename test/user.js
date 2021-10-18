@@ -85,3 +85,21 @@ describe('Testing users endpoint', () => {
         })
     })
 })
+
+//Enviar solicitudes de amistad
+describe('Testing send request friendship endpoint', () => {
+    it('Sending request', () =>{
+        chai.request(url)
+        .post('/sendRequestFriendship')
+        .set({ Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJHdWFkYWx1cGUgQW5nw6lsaWNhIiwibGFzdE5hbWVQIjoiQ2hhY8OzbiIsImxhc3ROYW1lTSI6IkNydXoiLCJlbWFpbCI6ImdwZUFuZ2VsaWNhNjlAZ21haWwuY29tIn0sImlhdCI6MTYzNDMyNDkzMH0.zONmg3jxnBBHJKyIrqyRnngIYOVbmis_kusAyqW8qrI' })
+        .send({
+            emailSend: "gpeAngelica69@gmail.com",
+            emailReceive: "monik196901@gmail.com",
+            status: "Enviado"
+        })
+        .end(function name(err,res){
+            expect(res.text).to.be.equal('Solicitud de amistad enviada.');
+            expect(res).to.have.status(200)
+        })
+    })
+})
