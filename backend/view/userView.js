@@ -44,4 +44,11 @@ module.exports = async (app) => {
         console.log(resp);
         res.send(resp);
     });
+    //Enviar solicitud de amistad
+    app.post('/sendRequestFriendship',autentication.userAutentication,async(req,res) => {
+        let request = req.body;
+        let resp = await userController.sendReqFriend(request);
+        console.log(resp);
+        res.send(resp);
+    });
 };

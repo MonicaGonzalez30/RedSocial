@@ -1,10 +1,11 @@
 const sequelize = require('../db/conexion');
 
 module.exports = class loginModel {
-    constructor(user,profile,feedback){
+    constructor(user,profile,feedback,request){
         this.user = user;
         this.profile = profile;
         this.feedback = feedback;
+        this.request = request;
     }
     async create (user){
         let result = await sequelize.query("INSERT INTO users ([name],lastNameP,lastNameM,email,[password]) VALUES('" + user.name + "','" + user.lastNameP + "','" + user.lastNameM + "','" + user.email + "','" + user.password + "');");
@@ -29,5 +30,9 @@ module.exports = class loginModel {
     async list (){
         let result = await sequelize.query("SELECT [name],lastNameP,lastNameM,photo,users.email FROM users INNER JOIN profiles ON users.email = profiles.email;");
         return result[0];
+    }
+    async createFriend (request){
+        let result = await sequelize.query("INSERT INTO friendships (emailSend,emailReceive,[status]) VALUES('" + request.emailSend + "','" + request.emailReceive + "','" + request.status + "');");
+        return result;
     }
 }

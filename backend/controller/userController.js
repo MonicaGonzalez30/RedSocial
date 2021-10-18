@@ -56,3 +56,13 @@ module.exports.listUsers = async () => {
     let result = await response.list();
     return result;
 }
+
+module.exports.sendReqFriend = async (request) => {
+    let response = new userModel();
+    let result = await response.createFriend(request);
+    if(result){
+        return "Solicitud de amistad enviada.";
+    } else{
+        return "Solicitud de amistad no enviada.";
+    }
+}
