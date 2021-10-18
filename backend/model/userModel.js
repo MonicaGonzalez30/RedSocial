@@ -35,4 +35,8 @@ module.exports = class loginModel {
         let result = await sequelize.query("INSERT INTO friendships (emailSend,emailReceive,[status]) VALUES('" + request.emailSend + "','" + request.emailReceive + "','" + request.status + "');");
         return result;
     }
+    async findFriendships (userEmail){
+        let result = await sequelize.query("SELECT * FROM friendships WHERE emailReceive = '" + userEmail + "';");
+        return result[0];
+    }
 }

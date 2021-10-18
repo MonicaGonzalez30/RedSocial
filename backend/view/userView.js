@@ -51,4 +51,11 @@ module.exports = async (app) => {
         console.log(resp);
         res.send(resp);
     });
+    //Mostrar solicitudes de amistad
+    app.get('/requestsFriendship/:email',autentication.userAutentication,async(req,res) => {
+        let userEmail = req.params.email
+        let resp = await userController.listFriendships(userEmail);
+        console.log(resp);
+        res.send(resp);
+    });
 };

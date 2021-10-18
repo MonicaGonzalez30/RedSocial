@@ -66,3 +66,13 @@ module.exports.sendReqFriend = async (request) => {
         return "Solicitud de amistad no enviada.";
     }
 }
+
+module.exports.listFriendships = async (userEmail) => {
+    let response = new userModel();
+    let result = await response.findFriendships(userEmail);
+    if (result) {
+        return result;
+    } else {
+        return "No hay solicitudes de amistad."
+    }
+}
